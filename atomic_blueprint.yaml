@@ -1,0 +1,25 @@
+sample_blueprint:
+  types:
+    - 'sample_type.yaml' # a file (or just type it here lul, it's yaml)
+    # programmable interface with as string ofc
+  # order matters, so define backends first. define multiple if you want each
+  # handling a different part of the services
+  database:
+    - orm1:
+        sqlite:
+          file: 'dingdong.db'
+  database_adapter:
+    - orm1_adapter:
+        type: 'sqlalchemy'
+        database: 'orm1'
+  backend:
+    - flask1: #we can create multiple back end
+        type: 'flask23'
+        endpoints:
+          - 'create_flask2.3.yaml' #the def file
+  frontend: #same create multiple front ends that are agnostic
+    - vue27:
+        definition: 'create_vue_2.7.yaml'
+        services:
+          create:
+            backend: 'flask23' #which back end this page should talk to for create

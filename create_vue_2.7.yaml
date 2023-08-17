@@ -1,0 +1,12 @@
+vue_template:
+  container: # div class=container or section class=mx-auto px-20 .. depends on AI and stack picked
+    form:
+      id: form1 #have several forms, fk it
+      type_properties: # since it knows it's in a form, it will do this directive as form objects
+        exclude: #we're doing create so don't print any identity fields
+          - identity
+typescript_tag: # <script type=ts...
+  vue_imports:
+  api_imports: # this will trigger printing import {api} from 'api.ts' .. etc.. handled by the AI
+  typescript_class: #add a class that will house
+      form_submit: form1

@@ -1,0 +1,29 @@
+some_type: #let's name it
+  id: #it's got an id field
+    identity: #it's an identity field
+    smallint: # a small int so we run out of records space (jokes)
+  some_name_field:
+    string:
+      size: 100
+  content_field:
+    string:
+    validation:
+      - customRegex:
+        regex:
+          check: '/^0-9/'
+          message: "oh no, honey no numbers in this field" #validation
+      - stringCheck:
+          isString:
+            message: "also written this way with known validator isString"
+  important_field:
+    backend_only: #only seen on the back end
+    bigint: # large number!
+    backend_on_update:
+      increment: #instead of updating it's value, increment this field on updates
+  message:
+    frontend_only: #only seen on the front end
+    string: # cool now our front end type has a message field
+            # that can be set when api calls that use it either succeed or fail
+            # which is useful when you have a grid of actionable items
+
+

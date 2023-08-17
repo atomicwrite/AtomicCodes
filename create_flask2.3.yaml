@@ -1,0 +1,12 @@
+endpoints:
+  create: #this is just the name
+    incoming_type: 'some_type' # what type defines what this endpoint expects as parameters
+    verb: 'POST'
+    validate: #validate the data  .. note these two order can be switched to taste
+    authenticate: #authenticate the user
+    database_action: # we're gonna dozies an insert, in this case sqlalchemy
+      orm1:
+        insert:
+          incoming_type: #we are inserting the type properties
+            exclude:
+              identity: #but not the id fields if any were sent along
